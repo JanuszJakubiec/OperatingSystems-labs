@@ -1,0 +1,496 @@
+Komentarz:
+Jak widac na raporcie ponizej, czasy uzyskane przez poszczegolne programy nie roznia
+sie zbytnio w zaleznosci od rodzaju linkowania biblioteki. Roznice pomiedzy poszczegolnymi
+czasami wynikaja raczej z chwilowej dyspozycji komputera i jego obciazeniem niz
+wybranym sposobem zalaczenia biblioteki.
+
+
+
+static library
+5 files with 1000000 lines
+merging:
+real time: 0.060000
+user time: 0.030000
+system time: 0.020000
+saving:
+real time: 0.110000
+user time: 0.080000
+system time: 0.030000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.010000
+many operations duration time:
+real time: 0.300000
+user time: 0.200000
+system time: 0.090000
+
+5 files with 10000 lines
+merging:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+saving:
+real time: 0.010000
+user time: 0.010000
+system time: 0.000000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.030000
+user time: 0.030000
+system time: 0.000000
+
+5 files with 1000 lines
+merging:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+saving:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.010000
+user time: 0.000000
+system time: 0.000000
+
+50 files with 1000000 lines
+merging:
+real time: 0.620000
+user time: 0.360000
+system time: 0.260000
+saving:
+real time: 0.960000
+user time: 0.620000
+system time: 0.340000
+delete_block:
+real time: 0.010000
+user time: 0.010000
+system time: 0.000000
+many operations duration time:
+real time: 1.730000
+user time: 1.100000
+system time: 0.620000
+
+50 files with 10000 lines
+merging:
+real time: 0.080000
+user time: 0.030000
+system time: 0.040000
+saving:
+real time: 0.120000
+user time: 0.070000
+system time: 0.040000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.210000
+user time: 0.110000
+system time: 0.080000
+
+50 files with 1000 lines
+merging:
+real time: 0.020000
+user time: 0.000000
+system time: 0.010000
+saving:
+real time: 0.020000
+user time: 0.000000
+system time: 0.010000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.040000
+user time: 0.000000
+system time: 0.020000
+
+300 files with 1000000 lines
+merging:
+real time: 3.760000
+user time: 1.960000
+system time: 1.790000
+saving:
+real time: 5.430000
+user time: 3.760000
+system time: 1.660000
+delete_block:
+real time: 0.010000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 9.320000
+user time: 5.800000
+system time: 3.510000
+
+300 files with 10000 lines
+merging:
+real time: 0.390000
+user time: 0.220000
+system time: 0.160000
+saving:
+real time: 0.560000
+user time: 0.380000
+system time: 0.170000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.960000
+user time: 0.610000
+system time: 0.340000
+
+300 files with 1000 lines
+merging:
+real time: 0.050000
+user time: 0.020000
+system time: 0.020000
+saving:
+real time: 0.080000
+user time: 0.030000
+system time: 0.060000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.130000
+user time: 0.050000
+system time: 0.080000
+
+shared library
+5 files with 1000000 lines
+merging:
+real time: 0.090000
+user time: 0.030000
+system time: 0.040000
+saving:
+real time: 0.120000
+user time: 0.070000
+system time: 0.050000
+delete_block:
+real time: 0.000000
+user time: 0.010000
+system time: 0.000000
+many operations duration time:
+real time: 0.340000
+user time: 0.210000
+system time: 0.110000
+
+5 files with 10000 lines
+merging:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+saving:
+real time: 0.010000
+user time: 0.000000
+system time: 0.000000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.030000
+user time: 0.020000
+system time: 0.000000
+
+5 files with 1000 lines
+merging:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+saving:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+
+50 files with 1000000 lines
+merging:
+real time: 0.600000
+user time: 0.290000
+system time: 0.300000
+saving:
+real time: 0.890000
+user time: 0.670000
+system time: 0.220000
+delete_block:
+real time: 0.000000
+user time: 0.010000
+system time: 0.000000
+many operations duration time:
+real time: 1.610000
+user time: 1.050000
+system time: 0.550000
+
+50 files with 10000 lines
+merging:
+real time: 0.060000
+user time: 0.020000
+system time: 0.040000
+saving:
+real time: 0.100000
+user time: 0.060000
+system time: 0.040000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.180000
+user time: 0.080000
+system time: 0.080000
+
+50 files with 1000 lines
+merging:
+real time: 0.010000
+user time: 0.000000
+system time: 0.000000
+saving:
+real time: 0.020000
+user time: 0.000000
+system time: 0.020000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.030000
+user time: 0.000000
+system time: 0.020000
+
+300 files with 1000000 lines
+merging:
+real time: 3.360000
+user time: 1.770000
+system time: 1.580000
+saving:
+real time: 5.370000
+user time: 3.660000
+system time: 1.710000
+delete_block:
+real time: 0.000000
+user time: 0.010000
+system time: 0.000000
+many operations duration time:
+real time: 8.870000
+user time: 5.520000
+system time: 3.350000
+
+300 files with 10000 lines
+merging:
+real time: 0.380000
+user time: 0.200000
+system time: 0.170000
+saving:
+real time: 0.550000
+user time: 0.380000
+system time: 0.170000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.940000
+user time: 0.580000
+system time: 0.350000
+
+300 files with 1000 lines
+merging:
+real time: 0.060000
+user time: 0.010000
+system time: 0.030000
+saving:
+real time: 0.090000
+user time: 0.060000
+system time: 0.040000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.150000
+user time: 0.070000
+system time: 0.070000
+
+dynamic library
+5 files with 1000000 lines
+merging:
+real time: 0.080000
+user time: 0.050000
+system time: 0.020000
+saving:
+real time: 0.110000
+user time: 0.070000
+system time: 0.040000
+delete_block:
+real time: 0.010000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.340000
+user time: 0.240000
+system time: 0.090000
+
+5 files with 10000 lines
+merging:
+real time: 0.020000
+user time: 0.000000
+system time: 0.000000
+saving:
+real time: 0.010000
+user time: 0.010000
+system time: 0.010000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.040000
+user time: 0.020000
+system time: 0.010000
+
+5 files with 1000 lines
+merging:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+saving:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+
+50 files with 1000000 lines
+merging:
+real time: 0.660000
+user time: 0.380000
+system time: 0.280000
+saving:
+real time: 0.900000
+user time: 0.630000
+system time: 0.270000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 1.700000
+user time: 1.110000
+system time: 0.590000
+
+50 files with 10000 lines
+merging:
+real time: 0.070000
+user time: 0.030000
+system time: 0.020000
+saving:
+real time: 0.100000
+user time: 0.080000
+system time: 0.030000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.180000
+user time: 0.120000
+system time: 0.060000
+
+50 files with 1000 lines
+merging:
+real time: 0.010000
+user time: 0.000000
+system time: 0.000000
+saving:
+real time: 0.020000
+user time: 0.010000
+system time: 0.010000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.030000
+user time: 0.010000
+system time: 0.010000
+
+300 files with 1000000 lines
+merging:
+real time: 3.320000
+user time: 1.890000
+system time: 1.410000
+saving:
+real time: 5.280000
+user time: 3.770000
+system time: 1.520000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 8.720000
+user time: 5.740000
+system time: 2.970000
+
+300 files with 10000 lines
+merging:
+real time: 0.390000
+user time: 0.180000
+system time: 0.200000
+saving:
+real time: 0.560000
+user time: 0.400000
+system time: 0.160000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.960000
+user time: 0.590000
+system time: 0.360000
+
+300 files with 1000 lines
+merging:
+real time: 0.050000
+user time: 0.030000
+system time: 0.020000
+saving:
+real time: 0.090000
+user time: 0.050000
+system time: 0.040000
+delete_block:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+many operations duration time:
+real time: 0.140000
+user time: 0.080000
+system time: 0.060000
