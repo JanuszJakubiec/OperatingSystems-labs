@@ -3,6 +3,8 @@
 #include <time.h>
 #include <string.h>
 #include <time.h>
+#include <sys/times.h>
+#include <unistd.h>
 
 const int BUFFER_SIZE = 10000;
 const int FILE_NAME_SIZE = 1000;

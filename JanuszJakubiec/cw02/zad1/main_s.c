@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
   char buffer[BUFFER_SIZE];
   char file1[FILE_NAME_SIZE];
   char file2[FILE_NAME_SIZE];
-  int out = 0;
-  int in = 1;
+  int out = 1;
+  int in = 0;
   char sign[1];
   if(argc < 3)
   {

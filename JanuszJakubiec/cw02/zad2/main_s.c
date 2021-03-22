@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
   char buffer[BUFFER_SIZE];
   char searched_sign;
   char file[FILE_NAME_SIZE];
-  int out = 0;
+  int out = 1;
   char sign[0];
   if(argc < 3)
   {

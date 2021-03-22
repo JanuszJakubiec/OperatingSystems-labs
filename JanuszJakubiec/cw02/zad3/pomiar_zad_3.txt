@@ -1,0 +1,8 @@
+Funkcje systemowe:
+real: 45.97s
+user: 3.02s
+system: 42.88s
+Funkcje biblioteczne:
+real: 1.33s
+user: 1.10s
+system: 0.22s

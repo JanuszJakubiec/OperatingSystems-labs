@@ -44,14 +44,14 @@ void insert_buffor_to_proper_file(char buffer[BUFFER_SIZE], int b, int c, int le
 int main(int argc, char *argv[])
 {
   char buffer[BUFFER_SIZE];
-  int out = 0;
+  int out = 1;
   char sign[0];
   char atext[60] = "Liczb parzystych jest ";
   char even_n[14];
   int f = open("dane.txt", O_RDONLY);
-  int a = open("a.txt", O_WRONLY|O_CREAT|S_IRWXU);
-  int b = open("b.txt", O_WRONLY|O_CREAT|S_IRWXU);
-  int c = open("c.txt", O_WRONLY|O_CREAT|S_IRWXU);
+  int a = open("a.txt", O_WRONLY|O_CREAT, S_IRWXU);
+  int b = open("b.txt", O_WRONLY|O_CREAT, S_IRWXU);
+  int c = open("c.txt", O_WRONLY|O_CREAT, S_IRWXU);
   int even_counter = 0;
   if(f == -1)
   {
