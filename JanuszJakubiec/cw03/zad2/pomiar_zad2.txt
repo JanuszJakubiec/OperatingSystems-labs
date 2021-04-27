@@ -1,0 +1,60 @@
+Otrzymane wyniki sa duzo nizsze niz osiagniete podczas sprawozdania 1, gdize
+do polaczenia 300 plikow zawierajacych 100000 linii czas wynosil 3,48s. Tutaj czas potrzebny
+do tej operacji wyniosl jedynie 0,93s. Dzieje sie tak daltego, poniewaz pliki sa
+laczone rownolegle, a nie po kolei jak w labie 1. Jak sie okazuje delegowanie
+tego rodzaju dzialan(niezaleznych od siebie) do procesow potomnych daje olbrzymia oszczednosc
+czasu. Dodatkowo jestemy w stanie wykorzystac w 100% dostepne nam zasoby, gdyz praktycznie
+wszystkie procesory w dzisiejszych czasach posiadaja wiele watkow.
+5 files with 1000000 lines
+merging:
+real time: 0.050000
+user time: 0.000000
+system time: 0.000000
+
+5 files with 10000 lines
+merging:
+real time: 0.010000
+user time: 0.000000
+system time: 0.000000
+
+5 files with 1000 lines
+merging:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+
+50 files with 1000000 lines
+merging:
+real time: 0.180000
+user time: 0.000000
+system time: 0.000000
+
+50 files with 10000 lines
+merging:
+real time: 0.040000
+user time: 0.000000
+system time: 0.000000
+
+50 files with 1000 lines
+merging:
+real time: 0.000000
+user time: 0.000000
+system time: 0.000000
+
+300 files with 1000000 lines
+merging:
+real time: 0.930000
+user time: 0.000000
+system time: 0.010000
+
+300 files with 10000 lines
+merging:
+real time: 0.160000
+user time: 0.000000
+system time: 0.010000
+
+300 files with 1000 lines
+merging:
+real time: 0.040000
+user time: 0.000000
+system time: 0.010000

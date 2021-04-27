@@ -1,0 +1,17 @@
+1. Dla wielu producentow i jednego konsumenta, program dziala poprawnie w kazdym przypadku
+testowanym. Pomimo N wiekszego niz PIPE_BUF, przy jednym customerze czytajacym
+program jest w stanie dostarczyc poprawnie wszystkie linie.
+
+2.Dla jednego producenta i wielu konsumentow program dziala poprawnie dla malego N = 5, jak
+i dla N niewiele wiekszego niz PIPE_BUF N=5000. Niestety wiele customerow nie dalo rady przepisac
+poprawnie linni dla N duzego, N=10000.
+
+3.Dla wielu producentow i wielu konsumentow, program poradzil sobie z przesylem danych
+dla N = 5, niestety juz dla N = 5000 i 10000 podawal bledne wyniki.
+
+Wnioski:
+Program dla malych N radzi sobie bardzo dobrze, gdyz operacje sa wykonywane atomicznie.
+Dla wiekszych N sytuacjia nie jest juz tak prosta. Duzo zalezy od szybkosci wpisywania przez
+producentow oraz szybkosci i koordynacji odczytu przez customerow. Im wiecej jest producentow
+i im wiecej customerow tym wieksza szansa, ze cos pojdzie nie tak i w wyniku tego
+result.txt bedzie posiadal bledna zawartosc.

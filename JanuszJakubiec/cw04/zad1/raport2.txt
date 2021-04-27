@@ -1,0 +1,5 @@
+Ustawienia dyspozycji sygnalow ignore, handle, oraz block sa dziedziczone po wykonaniu
+funkcji fork. W programie potomnym wywolanym funkcja fork, nie mamy dostepu do kolejki
+sygnalow rodzica.
+Po wywolaniu funkcji exec dziedziczone sa ignore, block, oraz do programu potomnego przekazywana
+jest kolejka sygnalow rodzica, dzieki czemu sygnal zablokowany w rodzicu, jest widoczny w kolejce przez dziecko.

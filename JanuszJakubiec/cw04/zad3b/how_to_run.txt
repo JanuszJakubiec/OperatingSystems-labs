@@ -1,0 +1,8 @@
+aby uruchomic zadanie, nalezy otworzyc 2 terminale. W jednym uruchamiamy najpierw
+catcher, przekazujemy do niego tryb w ktorym bedziemy wysylac do niego sygnaly.
+catcher po wlaczeniu wypisuje swoj pid
+
+nastepnie nalezy wlaczyc sendera, podajac nastepujace argumenty:
+1.pid catchera
+2.ilos sygnalow
+3.tryb wysylania sygnalow - bardzo wazne, zeby byl taki sam jak podajemy w catcherze.

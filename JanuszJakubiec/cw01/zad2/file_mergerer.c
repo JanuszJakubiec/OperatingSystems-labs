@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "shared_types.h"
 
 struct tmp_files_header delete_tmp_files(struct tmp_files_header header)
 {
@@ -87,6 +88,7 @@ FILE* merge_two_files(char file1[100], char file2[100])
 
 struct tmp_files_header merge_many_files(struct files_list_header files, struct tmp_files_header tmp_files)
 {
+
   if(tmp_files.size > 0)
     tmp_files = delete_tmp_files(tmp_files);
   char file1[100];
@@ -100,6 +102,7 @@ struct tmp_files_header merge_many_files(struct files_list_header files, struct 
     colon = strchr(files.files_list[i], ':');
     int index = (int)(colon - files.files_list[i]);
     strncpy(file1, files.files_list[i], index);
+    file1[index] = '\0';
     strncpy(file2, files.files_list[i]+index+1, strlen(files.files_list[i]));
     tmp_files.table[i] = merge_two_files(file1, file2);
     if(tmp_files.table[i] == NULL)

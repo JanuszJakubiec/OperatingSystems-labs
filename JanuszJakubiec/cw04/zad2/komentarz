@@ -1,0 +1,2 @@
+Komentarz znajduje sie w konkretnych scenariuszach testowych, komentuje on to co ma pokazac dany scenriusz. Wszystkie dostepne do uruchonienia scenariusze testowe znajduja sia w makefile
+Makefile test nie przechodzi, gdyz scenariusze maja czasami na celu przerwanie poprzez otrzymanie SIGUSR1. Najlepiej wywolac kazady ze scenariuszy osobno.
