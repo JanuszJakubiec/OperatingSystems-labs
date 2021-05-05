@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "shared_types.h"
 
 struct tmp_files_header delete_tmp_files(struct tmp_files_header header)
 {

@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     if(strcmp(argv[i], "merge_files") == 0)
     {
       free_list(list);
-      int n = find_size_of_files_list(argv, i+1);
+      int n = find_size_of_files_list(argv, i+1, argc);
       list.size = n;
       list.files_list = (char**)calloc(n, sizeof(char*));
       int j = i;
