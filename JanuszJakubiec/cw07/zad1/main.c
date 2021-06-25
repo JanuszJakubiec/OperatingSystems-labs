@@ -1,18 +1,14 @@
 #include "header.h"
 
-int* tab;
 int oven_shared;
 int table_shared;
 int oven_semafors;
 int table_semafors;
 
+
 void sig_int_handler(int sig)
 {
-  int size = tab[0];
-  for(int i = 1; i<size+1; i++)
-  {
-    kill(tab[i],SIGINT);
-  }
+  kill(0, SIGINT);
   semctl(oven_semafors, 0, IPC_RMID);
   semctl(table_semafors, 0, IPC_RMID);
   shmctl(oven_shared,IPC_RMID,NULL);
@@ -55,6 +51,7 @@ void reset_semafors_and_shared_memory()
 
 int main(int argc, char *argv[])
 {
+  srand(time(NULL));
   if(argc < 3)
   {
     printf("%s\n", "Not enaugh arguments");
@@ -63,8 +60,6 @@ int main(int argc, char *argv[])
   struct sigaction act1;
   int number_of_chefs = atoi(argv[1]);
   int number_of_deliverers = atoi(argv[2]);
-  tab = calloc(number_of_chefs + number_of_deliverers+1, sizeof(int));
-  tab[0] = number_of_chefs + number_of_deliverers;
   oven_shared = shmget(ftok(HOME, 'o'),sizeof(struct oven), IPC_CREAT | 0777);
   table_shared = shmget(ftok(HOME, 't'),sizeof(struct table), IPC_CREAT | 0777);
   oven_semafors = semget(ftok(HOME, 'o'), OVEN_SEMAFORS, IPC_CREAT | 0777); // 0 -> free space in oven, 1 -> flag if sb is using oven_table
@@ -73,24 +68,24 @@ int main(int argc, char *argv[])
   for(int i = 1; i < number_of_chefs+1; i++)
   {
     pid_t my_child_pid = fork();
+    char num[20];
+    sprintf(num, "%d", rand());
     if(my_child_pid == 0)
     {
-      execl("./chef", "chef", NULL);
+      execl("./chef", "chef", num, NULL);
       exit(0);
     }
-    sleep_for_less(100, 200);
-    tab[i] = my_child_pid;
   }
   for(int i = 1; i < number_of_deliverers+1; i++)
   {
     pid_t my_child_pid = fork();
+    char num[20];
+    sprintf(num, "%d", rand());
     if(my_child_pid == 0)
     {
-      execl("./deliverer", "deliverer", NULL);
+      execl("./deliverer", "deliverer", num, NULL);
       exit(0);
     }
-    sleep_for_less(1, 2);
-    tab[i+number_of_chefs] = my_child_pid;
   }
   sigemptyset(&act1.sa_mask);
   act1.sa_flags = 0;

@@ -1,0 +1,114 @@
+Numbers
+---------------------
+Numbers 1:
+thread 0 time: 91929
+total time: 92239
+summed time, all threads: 91929
+---------------------
+Numbers 2:
+thread 0 time: 86108
+thread 1 time: 65529
+total time: 86311
+summed time, all threads: 151637
+---------------------
+Numbers 4:
+thread 0 time: 49126
+thread 1 time: 46927
+thread 2 time: 38974
+thread 3 time: 48484
+total time: 49323
+summed time, all threads: 183511
+---------------------
+Numbers 8:
+thread 0 time: 22883
+thread 1 time: 22691
+thread 2 time: 28396
+thread 3 time: 24624
+thread 4 time: 20807
+thread 5 time: 22240
+thread 6 time: 26060
+thread 7 time: 21169
+total time: 38864
+summed time, all threads: 188870
+---------------------
+Numbers 16:
+thread 0 time: 13114
+thread 1 time: 12939
+thread 2 time: 20747
+thread 3 time: 25043
+thread 4 time: 13175
+thread 5 time: 12958
+thread 6 time: 30675
+thread 7 time: 31387
+thread 8 time: 18355
+thread 9 time: 23973
+thread 10 time: 16734
+thread 11 time: 19972
+thread 12 time: 12873
+thread 13 time: 11913
+thread 14 time: 22588
+thread 15 time: 23385
+total time: 41076
+summed time, all threads: 309831
+---------------------
+Block:
+---------------------
+Block 1:
+thread 0 time: 845
+total time: 1083
+summed time, all threads: 845
+---------------------
+Block 2:
+thread 0 time: 476
+thread 1 time: 446
+total time: 746
+summed time, all threads: 922
+---------------------
+Block 4:
+thread 0 time: 390
+thread 1 time: 516
+thread 2 time: 436
+thread 3 time: 363
+total time: 727
+summed time, all threads: 1705
+---------------------
+Block 5:
+thread 0 time: 339
+thread 1 time: 454
+thread 2 time: 446
+thread 3 time: 319
+thread 4 time: 431
+total time: 751
+summed time, all threads: 1989
+---------------------
+Block 8:
+thread 0 time: 342
+thread 1 time: 319
+thread 2 time: 239
+thread 3 time: 382
+thread 4 time: 281
+thread 5 time: 325
+thread 6 time: 268
+thread 7 time: 143
+total time: 890
+summed time, all threads: 2299
+---------------------
+Block 16:
+thread 0 time: 184
+thread 1 time: 146
+thread 2 time: 101
+thread 3 time: 455
+thread 4 time: 134
+thread 5 time: 96
+thread 6 time: 87
+thread 7 time: 162
+thread 8 time: 101
+thread 9 time: 70
+thread 10 time: 67
+thread 11 time: 63
+thread 12 time: 86
+thread 13 time: 64
+thread 14 time: 171
+thread 15 time: 122
+total time: 1338
+summed time, all threads: 2109

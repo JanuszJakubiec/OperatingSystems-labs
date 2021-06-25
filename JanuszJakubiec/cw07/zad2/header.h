@@ -16,19 +16,21 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <sys/wait.h>
+#include <semaphore.h>
+#include <sys/mman.h>
 
 #define OVEN_SIZE 5
 #define TABLE_SIZE 5
 #define HOME getenv("HOME")
-#define TABLE_SEMAFORS 3
-#define OVEN_SEMAFORS 2
 
-#define OVEN_FREE_SPACE 0
-#define OVEN_SHARED_AVAILABLE 1
+#define SHARED_OVEN_NAME "/shared_oven"
+#define SHARED_TABLE_NAME "/shared_table"
 
-#define TABLE_FREE_SPACE 0
-#define NUMBER_OF_PIZZAS 1
-#define TABLE_SHARED_AVAILABLE 2
+#define TABLE_BLOCKER "/table_blocker"
+#define TABLE_FREE "/table_free"
+#define OVEN_FREE "/oven_free"
+#define NUMBER_OF_PIZZAS "/number_of_pizzas"
+#define OVEN_BLOCKER "/oven_blocker"
 
 struct oven{
   int table[OVEN_SIZE];
@@ -40,11 +42,4 @@ struct table{
   int table[TABLE_SIZE];
   int pizzas_given;
   int pizzas_taken;
-};
-
-union semun {
-  int val;
-  struct semid_ds *buf;
-  unsigned short *array;
-  struct seminfo *__buf;
 };

@@ -1,0 +1,6 @@
+Gdy uruchomilem program dla N, M < 5, predkosc produkcji pizz zalezala tylko od czasu wylsowanego przez kucharza, a czas dostarczenia od
+czasow wylosowanych przez dostawce
+
+Podczas uruchomienia dla N, M > 5, np. dla 20, kucharze dluzej czekali na dostep do piekarnika i stolu niz przygotowywali i pieki pizze
+Dostawcy rowniez dluzej czekali na uzyskanie dostepu do stolu niz wynosil czas ich dojazdu do celu. Aby poprawic wydajnosc
+nalezaloby zwiekszyc pojemnosc stolu, i/lub pieca.

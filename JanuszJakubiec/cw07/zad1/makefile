@@ -12,4 +12,5 @@ clean:
 	rm chef
 
 test:
-	./main txt.txt
+	make all
+	./main 10 10

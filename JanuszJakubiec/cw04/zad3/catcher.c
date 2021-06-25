@@ -25,6 +25,7 @@ void usr1_handler(int sig, siginfo_t *siginfo, void *context)
   i = i+1;
   if(sigque == 1)
   {
+    char * tab = "Siema";
     union sigval value;
     value.sival_int = i;
     sigqueue(sender_pid, SIGUSR1,value);
