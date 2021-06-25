@@ -1,100 +1,37 @@
-Wątki - materiały pomocnicze
-Informacje wstępne
-W obrębie jednego procesu może istnieć wiele wątków, które działają w obrębie jednej przestrzeni adresowej i są wykonywane współbieżnie. Proces kończy swoje działanie, gdy zakończą swoje działanie wszystkie wątki (uwaga - zwrócenie wartości z funkcji main kończy działanie wszystkich wątków). Wątki są identyfikowane za pomocą ID typu pthread_t. Każdy wątek posiada własny odrębny stos.
+Zadania - Zestaw 8
+Rozważmy obraz monochromatyczny w formacie ASCII PGM (Portable Gray Map) reprezentowany jako macierz o wymiarach nxm, w którym każdy element jest liczbą całkowitą z zakresu od 0 do 255.  Zaimplementuj oparty na wątkach program generujący współbieżnie negatyw obrazu podanego na wejściu. Przez negatyw rozumiemy obraz w którym wartość piksela ij wyznaczana jest jako 255 – p gdzie p to wartość tego piksela w obrazie wejściowym
 
-Wątki współdzielą:
+ Program należy zaimplementować w dwóch wariantach ze względu na podział zadania:
 
-przestrzeń adresową (w szczególności zmienne globalne)
-identyfikatory związane z procesem (PID, UID, PPID, ...)
-deskryptory plików
-sposób obsługi sygnałów (signal dispositioin - ignorowanie/obsługa domyślna/handler)
-limity i liczniki zużycia zasobów
-inne: rygle na pliki, umask, katalog główny/bieżący, wartość nice
-Każdy wątek posiada własne:
+Wariant 1: Każdy wątek wyznacza wartości pikseli obrazu wyjściowego tylko dla tych pikseli obrazu wejściowego które przyjmują wartości z określonego zbioru/przedziału wartości. Zbiór liczb dla wątku można przydzielić w dowolny sposób, ale taki, by każdy wątek dostał inne liczby i zadanie było podzielone równo na wszystkie wątki. (50%)
 
-thread ID (TID)
-maska sygnałów
-wartość errno
-dane własne (thread local)
-stos (w szczególności zmienne lokalne)
-inne: polityki szeregowania, CPU affinity, security capabilities, alternate signal stack
-Do obsługi wątków w standardzie POSIX służy biblioteka pthreads. Aby jej używać, należy dołączyć plik nagłówkowy pthreads.h oraz dolinkować bibliotekę pthread (-lpthread)
+Wariant 2: Podział blokowy – k-ty wątek oblicza wartości pikseli w pionowym pasku o współrzędnych x-owych w przedziale od (𝑘−1)∗ceil(𝑁/𝑚) do 𝑘∗ceil(𝑁/𝑚)−1, gdzie 𝑁 to szerokość obrazu wejściowego a 𝑚 to liczba stworzonych wątków. (30%)
 
-Tworzenie wątków
-Do tworzenia nowych wątków służy funkcja pthread_create
+Program przyjmuje następujące argumenty:
 
-int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg)
-gdzie
+liczbę wątków,
+sposób podziału obrazu pomiędzy wątki, t.j. jedną z dwóch opcji: numbers / block
+nazwę pliku z wejściowym obrazem,
+nazwę pliku wynikowego.
+Po wczytaniu danych (wejściowy obraz) wątek główny tworzy tyle nowych wątków, ile zażądano w argumencie wywołania. Utworzone wątki równolegle wyznaczają wartości pikseli obrazu wyjściowego. Każdy stworzony wątek odpowiada za wygenerowanie części tego obrazu. Po wykonaniu obliczeń wątek kończy pracę i zwraca jako wynik (patrz pthread_exit) czas rzeczywisty spędzony na tworzeniu przydzielonej mu części wyjściowego obrazu. 
 
-thread - wskaźnik na miejsce gdzie zapisany zostanie identyfikator utworzonego wątku
-attr - dodatkowe ustawienia (opcjonalne, NULL = ustawienia domyślne)
-start_routine - adres funkcji, która ma zostać wykonana w utworzonym wątku
-arg - argument, z którym ma zostać wywołana
-Funkcja na którą wskazuje start_routine przyjmuje i zwraca wskaźnik na dowolne dane (void*). Nie ma gwarancji, że nowo utworzony wątek zacznie swoje działanie natychmiast - nie należy zatem przekazywać jako arg adresów zmiennych lokalnych które mogą ulec zniszczeniu zanim nowy wątek zacznie działać.
+Po zakończeniu pracy przez wszystkie stworzone wątki, wątek główny zapisuje powstały obraz  do pliku wynikowego i wypisuje na ekranie czas rzeczywisty spędzony na wykonaniu zadania (z dokładnością do mikrosekund). W czasie całkowitym należy uwzględnić narzut związany z utworzeniem i zakończeniem wątków (ale bez czasu operacji wejścia/wyjścia).
 
-Typ identyfikatora wątku pthread_t jest zależny od implementacji - może nie być to typ całkowitoliczbowy. Do porównywania równości dwóch wartości typu pthread_t służy funkcja pthread_equal:
+Wykonaj pomiary czasu operacji w zależności od:
 
-int pthread_equal(pthread_t tid1, pthread_t tid2);
-zwracająca 0 jeśli tid1 nie jest równy tid2. Swój własny identyfikator wątek może pobrać przy użyciu pthread_self:
+1.     Stosunku rozmiaru obrazu do liczby wątkow (przy czym uwzględnij przynajmniej następującą liczbę wątkow: 1,2,4,8,16)
 
-pthread_t pthread_self(void);
-Argument attr pozwala kontrolować różne aspekty działania tworzonego wątku. Przed przekazaniem adresu struktury pthread_attr_t należy ją zainicjalizować przy użyciu funkcji pthread_attr_init:
+2.     metody podziału zadania na podzadania
 
-int pthread_attr_init(pthread_attr_t *attr);
-Po wywołaniu pthread_create należy zwolnić potencjalnie zaalokowane przez to wywołanie zasoby używając funkcji pthread_attr_destroy:
+ Wyniki (czasy dla każdego wątku oraz całkowity czas wykonania zadania w zależności od wariantu) zamieść w pliku Times.txt i dołącz wraz z komentarzem do archiwum z rozwiązaniem zadania (20%).
 
-int pthread_attr_destroy(pthread_attr_t *attr);
-Cykl życia wątku
-Działanie wątku może zostać zakończone w wyniku kilku zdarzeń:
+Format wejścia-wyjścia
 
-jeśli wątek główny zakończy swoje działanie poprzez zwrócenie wartości z funkcji main, cały proces (wszystkie jego wątki) kończy swoje działanie
-jeśli którykolwiek wątek procesu wywoła exit, _Exit lub _exit, cały proces kończy swoje działanie
-jeśli którykolwiek wątek otrzyma sygnał, którego domyślnym sposobem obsługi jest zakończenie procesu, cały proces kończy swoje działanie
-jeśli wątek zwróci wartość ze swojej funkcji, kończy on swoje działanie
-jeśli wątek wywoła pthread_exit, kończy on swoje działanie
-jeśli wątek zostanie anulowany przez inny wątek, kończy on swoje działanie
-Funkcja
+Program powinien odczytywać i zapisywać obrazy w formacie ASCII PGM (Portable Gray Map). Pliki w tym formacie mają nagłówek postaci:
 
-void pthread_exit(void *rval_ptr);
-przyjmuje wartość która zostanie użyta jako wartość zwrócona przez wątek. Zwrócenie wartości val z funkcji wątku jest równoważne z wywołaniem pthread_exit(val) (poza wątkiem głównym - w nim zwrócenie val jest równoważne z exit(val)). Wywołanie pthread_exit z wątku głównego powoduje zakończenie wątku głównego, ale pozostałe wątki nadal mogą działać - cały proces zakończy się wówczas dopiero gdy zakończą swoje działanie wszystkie utworzone wątki, a kodem wyjścia procesu będzie 0.
+P2
+W H
+M
+...
 
-Przerwać działanie wątku z innego wątku można przy pomocy funkcji pthread_cancel:
-
-int pthread_cancel(pthread_t tid);
-Reakcja wątku na bycie anulowanym zależy od jego ustawień. Wątek może dopuszczać (zachowanie domyślne) lub odrzucać żądania anulowania, sterować tym zachowaniem można przy użyciu funkcji pthread_setcancelstate
-
-int pthread_setcancelstate(int state, int *oldstate);
-podając jako pierwszy argument PTHREAD_CANCEL_ENABLE lub PTHREAD_CANCEL_DISABLE. Anulowanie wątku z zablokowanym anulowaniem powoduje, że wątek zostanie anulowany w chwili gdy z powrotem odblokuje możliwość anulowania. Jeśli wątek dopuszcza anulowanie, może to robić w dwóch trybach:
-
-PTHREAD_CANCEL_DEFERRED (domyślnie) - wątek kontynuuje swoje działanie do momentu napotkania tzw. cancellation point
-PTHREAD_CANCEL_ASYNCHRONOUS - wątek kończy swoje działanie natychmiast
-Zmienić tryb anulowania można przy pomocy funkcji pthread_setcanceltype:
-
-int pthread_setcanceltype(int type, int *oldtype);
-Cancellation point to wywołanie jednej z wymienionej jako takowy przez standard POSIX funkcji (np. read, write, pause). W szczególności cancellation point stanowi wywołanie funkcji pthread_testcancel.
-
-Domyślnie po zakończeniu działania wątku wartość którą zwrócił można pobrać przy użyciu funkcji pthread_join:
-
-int pthread_join(pthread_t thread, void **rval_ptr);
-Jeśli wątek został anulowany, pod rval_ptr zapisana zostanie wartość PTHREAD_CANCELED. Jeśli chcemy, by dane zakończonego wątku nie były przechowywane do czasu wywołania pthread_join, a były usuwane natychmiast, możemy wątek uczynić wątkiem odłączonym. Można to uczynić na dwa sposoby: w momencie tworzenia wątku, lub później.
-
-Aby utworzyć wątek od razu jako wątek odłączony, należy do pthread_create przekazać adres struktury pthread_attr_t po wywołaniu na niej pthread_attr_setdetachstate
-
-int pthread_attr_setdetachstate(pthread_attr_t *attr, int detachstate);
-jako drugi argument przekazując PTHREAD_CREATE_DETACHED.
-
-Istniejący wątek można po utworzeniu odłączyć przy użyciu funkcji pthread_detach:
-
-int pthread_detach(pthread_t tid);
-Wątki i sygnały
-Sygnały są dostarczane do jednego wątku w procesie. Sygnały związane ze zdarzeniami sprzętowymi są z reguły dostarczane do wątku, który je spowodował, pozostałe - arbitralnie.
-
-Wątki mają odrębne maski sygnałów, ale wspólne ustawienia ich obsługi (signal disposition). Do ustawienia maski sygnału wątku służy funkcja pthread_sigmask:
-
-int pthread_sigmask(int how, const sigset_t* set, sigset_t* oset);
-o sygnaturze identycznej do sigprocmask. Działanie sigprocmask dla programu wielowątkowego jest niezdefiniowane.
-
-Aby wysłać sygnał do konkretnego wątku, należy użyć funkcji pthread_kill lub pthread_sigqueue: 
-
-int pthread_kill(pthread_t thread, int signo);
-int pthread_sigqueue(pthread_t thread, int sig, const union sigval value);
+gdzie: W to szerokość obrazu w pikselach, H to wysokość obrazu w pikselach a M to maksymalna wartość piksela. Zakładamy, że obsługujemy jedynie obrazy w 256 odcieniach szarości: od 0 do 255 (a więc 𝑀=255). Po nagłówku, w pliku powinno być zapisanych W*H liczb całkowitych reprezentujących wartości kolejnych pikseli. Liczby rozdzielone są białymi znakami (np. spacją). Piksele odczytywane są wierszami, w kolejności od lewego górnego do prawego dolnego rogu obrazu.
